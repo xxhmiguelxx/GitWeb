@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="/public/index.css">
+</head>
+<body style="background-color: rgb(92, 139, 92); color:white;">
+    <h1>Usuarios registrados</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Acciones</th>
+        </tr>
+        <tr>
+            <%  users.forEach( user => { %>
+                <td> <%= user.id %> </td>
+                <td> <%= user.name %></td>
+                <td> <%= user.email %></td>
+                <td>
+
+
+                    <button><a href="/edit/<%= user.id %>" style="color: black;">Editar</a></button>
+                    <button><a href="/delete/<%= user.id %>" style="color: black;">Eliminar</a></button>
+
+                </td>    
+            </tr>
+            <% }); %>    
+    </table>
+
+    <br><br>
+
+    <h1>Agregar Usuario</h1>
+    <form action="/add" method="post">
+        <label for="name">Nombre: </label>
+            <input type="text" name="name" id="name" maxlength="45" required placeholder="Ingresa nombre de Usuario">
+        <br><br>
+        <label for="email">Correo: </label>
+            <input type="email" name="email" id="email" maxlength="45" required placeholder="Ingresa Correo">
+        <br><br>
+        <button type="submit">Registro</button>
+    
+        </form>
+</body>
+</html>
